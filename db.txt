@@ -1,0 +1,39 @@
+CREATE TABLE positions (
+    id int NOT NULL AUTO_INCREMENT,
+    chainid int,
+    owner varchar(255),
+    trstatus varchar(255),
+    transactionid varchar(255),
+    orderstatus  varchar(255),
+    orderid int,
+    ordertype varchar(255),
+    stopprice FLOAT,
+    pairs  varchar(255),
+    side   varchar(255),
+    price  FLOAT,
+    amount FLOAT,
+    timestamp DATETIME,
+    inAmount float,
+    inAsset varchar(255),
+    PRIMARY KEY (id)
+);
+
+
+CREATE TABLE routes (
+    id int NOT NULL AUTO_INCREMENT,
+    uuid varchar(255),
+    settings varchar(4096),
+    PRIMARY KEY (id)
+);
+
+
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'tidedex'
+FLUSH PRIVILEGES;
+
+
+188.166.209.227
+root
+V(_59HCj}FEpLJp
+

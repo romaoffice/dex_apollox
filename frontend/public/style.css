@@ -1,0 +1,936 @@
+body, nav.navbar {
+    background-color: rgb(18, 18, 33) !important;   
+    color: white;
+}
+nav.navbar{
+    padding: 1.5em 1em;
+}
+.header-mobile nav.navbar {
+    border-bottom: 1px solid rgb(39, 39, 61);
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    font-size: 14px;
+}
+.navbar-brand img {
+    height: 32px;
+}
+.navbar-toggler-icon {
+    mix-blend-mode: multiply;
+}
+.navbar-collapse {
+    justify-content: space-between;
+}
+.nav-setting-btn img, .img-svg {
+    width: 24px;
+}
+.stable-connection-svg {
+    width: 16px;
+    height: 12px;
+}
+.stable-connection-text {
+    box-sizing: border-box;
+    margin: 0px 0px 0px 10px;
+    min-width: 0px;
+    color: rgb(43, 189, 181);
+    font-size: 12px;
+}
+.select-usdt {
+    background: transparent;
+    color: #7e9aff;
+    border: none;
+    font-size: 12px;
+}
+.icon-star {
+    color: #5a5c74
+}
+.table-btc-usdt {
+    background-color: transparent;
+    margin-top: 5px;
+}
+.table-btc-usdt th, .table-btc-usdt td {
+    color: #72768f;
+} 
+.table-btc-usdt th, .table-btc-usdt td, .table-btc-usdt tr {
+    border: none !important;
+}
+.td-white-btc-usdt {
+    color: white;
+    margin-left: 2px;
+}
+.td-gray-btc-usdt {
+    color: #b1b3c4;
+    margin-right: 2px;
+}
+.td-red-btc-usdt {
+    color: #ec3d9d;
+}
+.td-green-btc-usdt {
+    color: #1db0a7;
+}
+.btc-usdt-nav {
+    font-size: 12px;
+    justify-content: flex-start;
+}
+.text-red {
+    color: #ec3d9d;
+}
+.text-gray {
+    color: #b1b3c4;
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+.dropdown-menu{
+    margin-top: 0;
+    background-color: rgb(18, 18, 33);
+}
+.dropdown-menu a {
+    color: white;
+}
+.dropdown-menu a:hover {
+    color: white;
+    background-color: rgb(39, 39, 61);
+}
+.dropdown-toggle::after {
+    vertical-align: 0;
+    color: rgb(114, 118, 143);
+    border-top: 0.25em solid;
+    border-right: 0.2em solid transparent;
+    border-left: 0.2em solid transparent;
+}
+.cex-dex-item {
+    display: flex;
+    align-items: center;
+}
+.cex-dex {
+    border: 1px solid rgb(59, 61, 89);
+    border-radius: 6px;
+    padding: 2px;
+    height: 32px;
+    display: flex;
+}
+.cex-dex .btn {
+    font-weight: 500;
+    height: 100%;
+    padding: 0 8px;
+    color: white;
+    font-size: 14px;
+    height: 100%;
+}
+.btn-cex, .btn-cex:hover {
+    color: white;
+}
+.btn-dex {
+    background-color: rgba(255, 255, 255, 0.23);
+}
+.spot-new-item {
+    display: flex;
+    align-items: center;
+}
+.spot-new-item .spot-new {
+    box-sizing: border-box;
+    margin: 0px 0px 0px 5px;
+    min-width: 0px;
+    display: flex;
+    position: relative;
+    border-radius: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 12px;
+    line-height: 16px;
+    background-color: rgb(88, 76, 234);
+    color: rgb(255, 255, 255);
+}
+.spot-new-item .spot-new::before {
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    left: -3px;
+    top: 2px;
+    border-width: 6px 6px 6px 0px;
+    border-left-style: initial;
+    border-left-color: initial;
+    border-top-style: solid;
+    border-top-color: transparent;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    border-right-style: solid;
+    border-right-color: rgb(88, 76, 234);
+}
+.apx-img {
+    margin-right: 3px;
+}
+.dropdown-toggle-bnb {
+    padding: 6px 10px;
+    background-color: rgb(59, 61, 89);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.dropdown-toggle-bnb::after {
+    color: white;
+}
+.btn-connect-wallet {
+    margin: 0px;
+    appearance: none;
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    padding: 6px 12px;
+    min-width: 52px;
+    word-break: keep-all;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    min-height: 24px;
+    border: none;
+    font-size: 14px;
+    line-height: 20px;
+    background-image: linear-gradient(93.96deg, rgb(224, 95, 187) 0.76%, rgb(66, 80, 244) 100.57%);
+    background-color: rgb(107, 120, 238);
+    font-weight: 400;
+    display: flex;
+}
+.nav-item-bnb, .nav-item-connect-wallet {
+    display: flex;
+    align-items: center;
+}
+.nav-item-bnb .dropdown-item {
+    padding-left: 0.5rem;
+}
+.img-bsc {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    color: rgb(114, 118, 143);
+}
+.order-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.order-stepper .step-item {
+    box-sizing: content-box;
+    background-color: rgb(30, 31, 49);
+    color: rgb(65, 69, 93);
+    width: 6px;
+    height: 8px;
+    border-radius: 2px;
+    border: 2px solid rgb(59, 61, 89);
+    z-index: 10;
+    overflow: visible;
+    cursor: pointer;
+}
+.order-stepper .step-item-active {
+    width: 10px;
+    height: 12px;
+    /* transform: translateX(-50%); */
+    background-color: rgb(240, 240, 245);
+    border-radius: 4px;
+    border: 3px solid rgb(178, 180, 198);;
+    z-index: 20;
+    cursor: grab;
+    transition: box-shadow 0.2s ease 0s;
+}
+.order-stepper .step-line {
+    box-sizing: content-box;
+    position: absolute;
+    height: 4px;
+    background-color: rgb(90, 92, 116);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    background-clip: padding-box;
+    width: 100%;
+    right: 1px;
+}
+.order-book-header, .place-order-nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.css-1hydu6d {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    font-size: 24px;
+    fill: currentcolor;
+    width: 1em;
+    height: 1em;
+}
+.conect-wallet {
+    background-color: black;
+    border-radius: 60px;
+    font-size: 13px;
+    padding: 12px 25px;
+}
+.chart-container {
+  padding: 20px; 
+  width: 100%;
+  height: 400px;
+  resize: vertical;
+  overflow: auto;
+  border-color: rgb(18, 18, 33);
+  border-bottom: 1px solid rgb(39, 39, 61) ;
+}
+.swap-container, .journey-container {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-height: 682px;
+}
+.swap-container, .journey-container {
+    background-color: rgb(243, 243, 243);
+    padding: 24px 30px 40px;
+    border-radius: 20px;
+    border: none;
+}
+.chain-container .header-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    background-color: gray;
+}
+.btc-usdt-modal {
+    margin: 0;
+}
+.btc-usdt-modal .close {
+    text-shadow: none;
+    color: rgb(66, 69, 85);
+    font-size: 20px;
+    opacity: 1;
+}
+.btc-usdt-modal .modal-title {
+    font-size: 16px;
+}
+.btc-usdt-modal-content {
+    width: 100% !important;
+    border-radius: 0 !important;
+}
+.btc-usdt-modal, .btc-usdt-modal .modal-header, .btc-usdt-modal .modal-body {
+    background-color: rgb(30, 31, 49);
+    border: none !important;
+
+}
+.btc-usdt-modal .modal-header {
+    border-bottom: none;
+}
+.btc-usdt-modal .modal-body {
+    border: none !important;
+}
+.btc-usdt-modal .modal-body {
+    padding: 0;
+}
+.modal.fade .modal-dialog {
+    top: 0;
+}
+.modal.fade.in .modal-dialog {
+    transform: translate3d(0, -300px, 0);
+}
+.modal-dialog {
+    max-width: none !important;
+}
+.footer {
+    box-sizing: border-box;
+    padding: 0px 0px 0px 10px;
+    margin-left: -15px;
+    margin-right: -15px;
+    display: flex;
+    border-top: 1px solid rgb(39, 39, 61);
+    border-right-color: rgb(39, 39, 61);
+    border-bottom-color: rgb(39, 39, 61);
+    border-left-color: rgb(39, 39, 61);
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    z-index: 1000;
+    background-color: rgb(18, 18, 33);
+    align-items: center;
+}
+.header-connect-wallet {
+    display: none;
+}
+ul.navbar-nav {
+    margin-top: 15px;
+}
+.navbar-nav .nav-item {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.chain-container {
+    padding: 16px 24px 20px !important;
+    border: none;
+    border-radius: 10px;
+    height: 100px;
+}
+.pay-container {
+    justify-content: center;
+}
+.pay-dropdown {
+    margin-top: 0px !important;
+    display: flex;
+}
+.pay-input-group input {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+    height: 60px;
+    border-right: none;
+}
+.pay-input-group .input-group-append .input-group-text {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.pay-input-group .input-group-append  .input-group-append-container {
+    background-color: gainsboro;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+.nav-link.active {
+    font-weight: bold;
+}
+.chain-dropdown {
+    margin-top: 15px;
+}
+.chain-dropdown button {
+    width: 100%;
+}
+.chain-dropdown .dropdown-menu {
+    width: 300px;
+    padding: 0;
+    margin-left: -24px;
+}
+.chain-dropdown .dropdown-item {
+    padding: 15px;
+    border-bottom: 1px solid rgba(66, 63, 71, 0.1);
+}
+.chain-dropdown .dropdown-item img {
+    width: 28px;
+    height: 28px;
+    margin-right: 15px;
+}
+.chain-dropdown .btn-warning, .chain-dropdown .btn-warning.focus, .chain-dropdown .btn-warning:focus, .header-bnb-toggle {
+    background-color: white !important;
+    border-color: white !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-header .header-bnb-toggle {
+    border: 1px solid gray !important;
+    padding: 5px 10px !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white !important;
+}
+
+
+.navbar-nav.desktop-only {
+    /* display: none; */
+    flex-direction: row;
+
+}
+.navbar-container {
+    display: flex;
+    align-items: center;
+}
+.header-mobile .navbar-container {
+    justify-content: space-between;
+    width: 100%;
+}
+.header-mobile .cex-dex .btn {
+    margin-top: 0;
+}
+.header-mobile .img-mobile-dropdown {
+    width: 24px;
+    height: 24px;
+    color: rgb(114, 118, 143);
+}
+.header-mobile ul {
+    margin-top: 30px;
+}
+.header-mobile .item-border-top {
+    border-top: 1px solid rgb(30, 31, 49);
+}
+.navbar-mobile {
+    display: flex;
+}
+table {
+    font-size: 12px;
+}
+.btn-btc-usdt {
+    color: white !important;
+    font-size: 20px; 
+    font-weight: 500;
+}
+.btn-btc-usdt:after {
+    vertical-align: 0.255em;
+}
+.btc-usdt-search-icon, .btc-usdt-search-input, .btc-usdt-search-input:hover, .btc-usdt-search-input:focus {
+    background-color: #2c2d43 !important;
+    color: #5a5c74;
+    border: none;
+}
+.btc-usdt-search-icon {
+    padding: 0 0.75em;
+}
+.btc-usdt-search-input {
+    height: calc(1.5em + 2px) !important;
+}
+.btc-usdt-search-input:focus {
+    box-shadow:  0 0 0.2rem transparent;
+}
+.dropdown-menu-btc-usdt {
+    box-sizing: border-box;
+    /* margin-left: 15px; */
+    padding: 10px;
+    min-width: 0px;
+    background-color: rgb(30, 31, 49);
+    left: 0px;
+    width: 420px;
+    max-width: calc(100vw - 32px);
+    height: 450px;
+    max-height: 100vh;
+    box-shadow: rgb(20 21 26 / 10%) 0px 0px 1px, rgb(71 77 87 / 8%) 0px 7px 14px, rgb(20 21 26 / 8%) 0px 3px 6px;
+    border-radius: 4px;
+    z-index: 2000;
+}
+.footer-modal .dropdown-menu-btc-usdt {
+    max-width: none;
+}
+.card-footer-percent {
+    margin-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    flex: 1 1 0%;
+    font-size: 14px;
+    color: rgb(114, 118, 143);
+    background-color: rgb(43, 49, 57);
+    border-radius: 2px;
+    cursor: pointer;
+    text-align: center;
+}
+.btc-usdt-mobile .bsdt-usdt-row {
+    border-bottom: none;
+}
+.btc-usdt-mobile .showPrice {
+    color: rgb(240, 240, 245);
+    font-size: 24px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.nowPrice .changePrice {
+    font-size: 12px;
+    line-height: 16px;
+}
+.nowPrice .differencePrice {
+    margin-left: 16px;
+    font-size: 12px;
+}
+.flex-cloumn {
+    display: flex;
+    flex-direction: row;
+}
+.btc-usdt-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav-orders a {
+    color: #b1b3c4;
+    font-size: 14px;
+    padding: 16px 1px 12px;
+    margin: 0px 16px 0px 0px;
+}
+.nav-orders a.active {
+    color: rgb(126, 154, 255);
+    font-size: 14px;
+}
+.title-order-book {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.section-order, .section-place-order {
+    border-left: 1px solid rgb(39, 39, 61);
+    padding-top: 10px;
+}
+.section-place-order {
+    background-color: rgb(30, 31, 49);
+    font-size: 14px;
+}
+.nav-order-book .nav-item {
+    margin-right: 10px;
+}
+.nav-order-book .nav-item.disabled {
+    opacity: 0.5;
+}
+.select-order {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+.select-order option {
+    background-color: #1e1f31;
+    border: none;
+}
+.table-order-book {
+    background-color: transparent;
+    margin-top: 10px;
+}
+.table-order-book th, .table-order-book td, .table-order-book tr {
+    border: none !important;
+}
+.table-order-book td {
+    color: rgb(178, 180, 198);
+}
+.table-order-book th {
+    color: rgb(255, 90, 181);
+    font-weight: normal;
+}
+.table-order-book thead th {
+    color: rgb(114, 118, 143);
+}
+.table-order-book .text-big {
+    color: white;
+    font-size: 20px;
+}
+.table-order-book .text-big-span {
+    color: rgb(114, 118, 143);
+    font-size: 12px;
+    vertical-align: middle;
+}
+.table-order-book .th-green, .table-order-book-1 th {
+    color: rgb(43, 189, 181)
+}
+.btn-buy, .btn-sell {
+    border: none;
+    color: white;
+}
+.btn-buy, .btn-buy:hover, .btn-buy:focus {
+    background-color: rgb(29, 177, 168);
+}
+.btn-sell, .btn-sell:hover, .btn-sell:focus {
+    background-color: rgb(43, 49, 57);
+}
+.section-place-order .btn-buy, .section-place-order .btn-sell {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+}
+.place-order-nav .nav-link {
+    color: rgb(114, 118, 143);
+    font-weight: 500;
+    padding-left: 0;
+}
+.place-order-nav .nav-link.active {
+    color: rgb(126, 154, 255)
+}
+.icon-place-order-info {
+    display: flex;
+    align-items: center;
+}
+.icon-place-order-info i {
+    color: rgb(114, 118, 143);
+}
+.text-avbl {
+    font-size: 12px;
+    color: rgb(114, 118, 143);
+}
+.span-avbl-usdt {
+    font-size: 14px;
+    color: white;
+    padding-left: 5px;
+}
+.input-group-price span, .input-group-price input {
+    background-color: rgba(43, 47, 54, 0.9);
+    border: none;
+    color: white;
+}
+.input-group-price .input-group-prepend span {
+    color: rgb(132, 142, 156);
+}
+ 
+.input-group-price input, .input-group-price input:hover, .input-group-price input:focus {
+    box-shadow:  0 0 0.2rem transparent;
+    background-color: rgba(43, 47, 54, 0.9);
+    color: white !important;
+    text-align: right;
+}
+.assets-section {
+    border-top: 1px solid rgb(39, 39, 61);
+    padding: 10px 16px 4px;
+}
+.row-place-order {
+    align-items: stretch;
+    height: 100%;
+}
+.header-mobile .navbar-dark .navbar-toggler {
+    padding-right: 0;
+}
+.navbar-dark .navbar-toggler {
+    color: white;
+    border: none;
+}
+.nav-item-desktop {
+    display: none;
+}
+.header-desktop {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.navbar-brand-img-desktop {
+    display: none;
+}
+.navbar-brand-img-mobile {
+    display: block;
+}
+.header-mobile {
+    /* display: flex; */
+}
+.dropdown-menu-bnb-chain {
+    position: absolute !important;
+}
+.btn-btc-usdt-desktop {
+    display: none;
+}
+.btn-btc-usdt-mobile {
+    display: block;
+    padding-left: 0;
+}
+.btn-usdt {
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+}
+.tickerItemLabel {
+    font-size: 10px;
+    margin-right: 4px;
+    margin-bottom: 0px;
+    color: rgb(114, 118, 143);
+    line-height: 16px;
+    font-weight: 400;
+    text-align: left;
+    border-bottom: 1px solid transparent;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.tickerPriceText {
+    font-size: 12px;
+    color: rgb(240, 240, 245);
+}
+.btc-usdt-desktop {
+    display: none;
+}
+.btc-usdt-mobile {
+    display: block;
+}
+.mobile-only {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.ticketItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.top-border {
+    border-top: 1px solid rgb(39, 39, 61);
+}
+.right-border {
+    border-right: 1px solid rgb(39, 39, 61);
+}
+/* .header-desktop .btc-usdt-dropdown-container {
+    padding
+} */
+.ping-back {
+    background-color: #27162d;
+}
+.green-back {
+    background-color: #13212e;
+}
+.input-order-market-price span, .input-order-market-price input, .input-order-market-price input:hover, .input-order-market-price input:focus {
+    background-color: #3b3d59;
+}
+.mobile-footer {
+    background-color: rgb(30, 31, 49);
+    margin-right: 15px;
+}
+.btn-footer-buy, .btn-footer-buy:hover, .btn-footer-buy:focus {
+    margin: 0px 8px 0px 0px;
+    appearance: none;
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    padding: 6px 12px;
+    min-width: 52px;
+    word-break: keep-all;
+    min-height: 24px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: rgb(29, 177, 168);
+    height: 40px;
+    border-radius: 4px;
+    flex: 1 1 0%;
+    color: white;
+    border: none;
+}
+.btn-footer-sell, .btn-footer-sell:hover, .btn-footer-sell:focus {
+    margin: 0px;
+    appearance: none;
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    padding: 6px 12px;
+    min-width: 52px;
+    word-break: keep-all;
+    min-height: 24px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: rgb(239, 62, 158);
+    height: 40px;
+    border-radius: 4px;
+    flex: 1 1 0%;
+    color: white;
+    border: none;
+}
+@media (min-width: 992px) {
+    .mobile-only {
+        display: none;
+    }
+    .btc-usdt-desktop {
+        display: block;
+    }
+    .btc-usdt-mobile {
+        display: none;
+    }
+    .footer {
+        position: absolute;
+    }
+    .btn-btc-usdt-desktop {
+        display: block;
+    }
+    .btn-btc-usdt-mobile {
+        display: none;
+    }
+    .btn-btc-usdt-text {
+        display: flex;
+    }
+    .header-mobile {
+        display: none;
+    }
+    .header-desktop {
+        display: flex;
+        border-bottom: 1px solid rgb(39, 39, 61);
+    }
+    .navbar-brand-img-desktop {
+        display: block;
+    }
+    .navbar-brand-img-mobile {
+        display: none;
+    }
+    .navbar {
+        display: flex;
+        /* flex-direction: row-reverse; */
+        justify-content: space-between;
+        flex: 1;
+    }
+    .apx-nav-link {
+        display: flex;
+        align-content: center;
+    }
+    .nav-item-desktop {
+        display: block;
+    }
+    .navbar-nav.desktop-only {
+        display: flex;
+    }
+    .navbar-expand-sm .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+    .header-connect-wallet {
+        display: block;
+    }
+    ul.navbar-nav {
+        margin-top: 0 !important;
+    }
+    .navbar-nav .nav-item {
+        margin-bottom: 0;
+    }
+    .receive-col {
+        margin-top: 0;
+    }
+    .container-fluid {
+        position: relative;
+    }
+    .container-row {
+        min-height: calc(100vh - 93px);
+    }
+}
+
+@media (min-width: 1200px) {
+    .order-book-container, .place-order-container {
+        max-width: 300px;
+    }
+}
+
+
+
