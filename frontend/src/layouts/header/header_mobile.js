@@ -1,3 +1,5 @@
+import ConnectWallet from "./connectwallet";
+
 function HeaderMobile(){
 
   return (
@@ -8,44 +10,7 @@ function HeaderMobile(){
           <img src="./assets/images/bluetidelogoa-1.png" />
         </a>
         <div className="navbar-mobile">
-          <div className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle dropdown-toggle-bnb mr-3"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img
-                className="img-bsc mr-1"
-                src="./assets/images/bsc-logo.svg"
-              />
-            </a>
-            <div
-              className="dropdown-menu dropdown-menu-bnb-chain"
-              aria-labelledby="navbarDropdown"
-            >
-              <a className="dropdown-item" href="#">
-                <img
-                  className="img-bsc mr-1"
-                  src="./assets/images/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.webp"
-                />
-                Ethereum
-              </a>
-              <a className="dropdown-item" href="#">
-                {" "}
-                <img
-                  className="img-bsc mr-1"
-                  src="./assets/images/bsc-logo.svg"
-                />
-                BNB Chain
-              </a>
-            </div>
-          </div>
-          <a className="nav-link btn btn-light btn-connect-wallet" href="#">
-            Connect Wallet
-          </a>
+          <ConnectWallet/>
           <button
             className="navbar-toggler"
             type="button"
@@ -67,11 +32,6 @@ function HeaderMobile(){
                 DEX
               </button>
             </div>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link btn btn-light btn-connect-wallet" href="#">
-              Connect Wallet
-            </a>
           </li>
           <li className="nav-item item-border-top">
             <a className="nav-link" href="#">

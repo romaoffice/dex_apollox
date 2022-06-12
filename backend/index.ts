@@ -255,10 +255,27 @@ const io = new Server(httpServer, {
 
 
 io.on("connection", (socket) => {
+  let lastRoom:any=undefined;
   socket.on('join', function(room) {
-      console.log("connected a room");
+      console.log("connected a room",room,lastRoom);
+      if(lastRoom){
+        socket.leave(lastRoom);
+      }
       socket.join(room);
+      lastRoom = room;
   });
+  socket.on('leave', function(room) {
+      console.log("connected a room",room);
+      socket.leave(room);
+  });
+  socket.on('disconnect', function() {
+      console.log("dicsonnected.",lastRoom);
+      if(lastRoom){
+        console.log('leave room',lastRoom);
+        socket.leave(lastRoom);
+      }
+  });
+
 });
 
 httpServer.listen(443, () => {

@@ -58,7 +58,6 @@ const updateDb = async(chainId,orderbook)=>{
     }
 }
 const executeChain = async(chainId)=>{
-    console.log("executing")
     const web3 = new Web3(new Web3.providers.HttpProvider(common.web3url[chainId]));
     const myContract = new web3.eth.Contract(common.LIMIT_ABI[chainId],common.contract_limit_order[chainId]);
     if(ordersList[chainId]){
@@ -104,7 +103,7 @@ const executeChain = async(chainId)=>{
             console.log('ready to execute order for ',orderId,signedTx);
             const sentTx =await  web3.eth.sendSignedTransaction(signedTx.raw || signedTx.rawTransaction);          
         }catch(e){
-            console.log(e.message,orderId)
+            //console.log(e.message,orderId)
         }
 
     }

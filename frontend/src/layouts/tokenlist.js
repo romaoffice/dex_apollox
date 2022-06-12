@@ -1,5 +1,5 @@
 import useSharedState from "../hook/useSharedState";
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useMemo ,useRef} from "react";
 import io from "socket.io-client";
 
 function TokenList() {
@@ -19,6 +19,7 @@ function TokenList() {
     tokensList,
     setTokensList,
   } = useSharedState(); //useState(undefined);
+  const dropDownMenu = useRef(null);
   const favpos = "favbsc";
   const [fav, setFav] = useState(
     localStorage.getItem(favpos) ? JSON.parse(localStorage.getItem(favpos)) : {}
@@ -47,6 +48,7 @@ function TokenList() {
         }
         if (pairs[i].info.base + pairs[i].info.quote == symbolparam) {
           if (!selectedToken) {
+            console.log('set token again',pairs[i],selectedToken);
             setSelectedToken(pairs[i]);
           }
         }
@@ -118,6 +120,12 @@ function TokenList() {
     setSelectedToken(token);
     setLong(true);
     setAsk(Number(token.priceBNB));
+    dropDownMenu.current.classList.add("hidehover");
+    dropDownMenu.current.classList.remove("dropdown-menu");
+    setTimeout(()=>{
+      dropDownMenu.current.classList.add("dropdown-menu");
+    },1000)
+    console.log(token);
   };
 
   const changeFav = (token) => {
@@ -142,21 +150,18 @@ function TokenList() {
   };
 
   return (
-    <div >
+    <div ref={dropDownMenu} className="dropdown-menu dropdown-menu-btc-usdt"
+    style={{"overflowY":"scroll"}}>
+
       <div className="input-group mb-3">
         <div className="col-6 ">
-          <div
-            width="100px"
-            className="SearchInput__SearchBox-sc-1od94z4-0 fcCCDl"
-          >
-            <i className="bi bi-search" size="14" color="#48515D"></i>
-            <input
-              type="search"
-              placeholder="Search …"
-              value={searchToken}
-              onChange={(e) => setSearchToken(e.currentTarget.value)}
-            />
-          </div>
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text btc-usdt-search-icon" id="basic-addon1"><i className="fa fa-search"></i></span>
+              </div>
+              <input type="text" className="form-control btc-usdt-search-input" value={searchToken}
+              onChange={(e) => setSearchToken(e.currentTarget.value)} placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"/>
+            </div>
         </div>
         <div className="col-3 form-check form-check-inline m-0 pe-2">
           <input
@@ -167,8 +172,6 @@ function TokenList() {
               setSortMode(e.currentTarget.value);
             }}
             type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio1"
           />
           <label
             className="form-check-label text-muted"
@@ -186,8 +189,6 @@ function TokenList() {
               setSortMode(e.currentTarget.value);
             }}
             type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio2"
             style={{ background: "rgb(136, 136, 136)" }}
           />
           <label
@@ -200,9 +201,15 @@ function TokenList() {
       </div>
       <div>
         <i className="fa fa-star icon-star" aria-hidden="true" />
-        <select className="select-usdt">
-          <option selected="">USDT</option>
-        </select>
+          <span className="select-usdt">
+          USDT
+          </span>
+          {
+        // <select className="select-usdt">
+        //   <option selected="">USDT</option>
+        // </select>
+
+          }
       </div>
       <table className="table table-sm table-dark table-btc-usdt">
         <thead>
@@ -225,12 +232,14 @@ function TokenList() {
               onClick={(e) => {
                 setToken(token);
               }}
+              data-dismiss="modal"
+
             >
               <td className="text-nowrap">
                 <i
                   className={
-                    "bi  me-1 text-warning " +
-                    (fav[token.address] ? "bi-star-fill" : "bi-star")
+                    "fa fa-star icon-star" +
+                    (fav[token.address] ? " filledstart" : " unfilledstar")
                   }
                   onClick={(e) => {
                     e.stopPropagation();
@@ -241,29 +250,27 @@ function TokenList() {
               </td>
               <td>{token.priceBNB}</td>
               {sortMode == "CHANGE" && (
-                <td
-                  className={
-                    "text-end pe-2 " +
-                    (token.priceBNBChange > 0
-                      ? " mytext-success"
-                      : "mytext-danger")
-                  }
-                >
+                <td className="text-end pe-2" >
+                  <span className={(token.priceBNBChange > 0
+                      ? " td-green-btc-usdt"
+                      : " td-red-btc-usdt")
+                  }>
                   {token.priceBNBChange > 0 ? "+" : ""}
                   {token.priceBNBChange.toFixed(2)}%
+                  </span>
                 </td>
               )}
               {sortMode == "VOLUME" && (
                 <td
-                  className={
-                    "text-end pe-2 " +
-                    (token.volumeUSDChange > 0
-                      ? " mytext-success"
-                      : "mytext-danger")
-                  }
+                  className="text-end pe-2 "
                 >
+                  <span className={(token.volumeUSDChange > 0
+                      ? " td-green-btc-usdt"
+                      : " td-red-btc-usdt")
+                    }>
                   {token.volumeUSDChange > 0 ? "+" : ""}
                   {token.volumeUSDChange.toFixed(2)}%
+                  </span>
                 </td>
               )}
             </tr>

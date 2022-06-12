@@ -1,3 +1,4 @@
+import ConnectWallet from "./connectwallet";
 function HeaderDesktop(){
 
   return (
@@ -123,56 +124,7 @@ function HeaderDesktop(){
             </ul>
           </div>
           <div className="navbar-container">
-            <div className="navbar-desktop">
-              <ul className="navbar-nav navbar-nav-desktop desktop-only">
-                
-                <li className="nav-item nav-item-bnb">
-                  <div className="nav-item dropdown">
-                    <a
-                      className="nav-link dropdown-toggle dropdown-toggle-bnb"
-                      href="#"
-                      id="navbarDropdown"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <img
-                        className="img-bsc mr-1"
-                        src="./assets/images/bsc-logo.svg"
-                      />
-                      BNB
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a className="dropdown-item" href="#">
-                        <img
-                          className="img-bsc mr-1"
-                          src="./assets/images/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.webp"
-                        />
-                        Ethereum
-                      </a>
-                      <a className="dropdown-item" href="#">
-                        {" "}
-                        <img
-                          className="img-bsc mr-1"
-                          src="./assets/images/bsc-logo.svg"
-                        />
-                        BNB Chain
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li className="nav-item nav-item-connect-wallet">
-                  <a className="nav-link btn btn-light btn-connect-wallet" href="#">
-                    Connect Wallet
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link nav-setting-btn px-0" href="#">
-                    <img src="./assets/images/setting.svg" />
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <ConnectWallet/>
             <button
               className="navbar-toggler"
               type="button"

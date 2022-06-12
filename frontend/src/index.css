@@ -1,0 +1,87 @@
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 2px;
+    background-color: rgb(37, 45, 56);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #757d8a;
+    border-radius: 2px;
+}
+
+.hidehover {
+	display:none;
+}
+.filledstart {
+	color:#383e81;
+}
+
+.tr-shadow
+{
+    position: absolute;
+    right: 0px;
+    height: 26px;
+    width: 0px;
+    top:0px;
+}
+.relativetr 
+{
+  position: relative;
+  height:100%;
+  width:100%;  
+}
+
+.text-big {
+    color: white;
+    font-size: 20px;
+}
+
+.text-big-span {
+    color: rgb(114, 118, 143);
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.mytext-danger{
+	color: rgb(255, 90, 181);
+    font-weight: normal;
+}
+
+.mytext-success{
+	color: rgb(43, 189, 181);
+    font-weight: normal;
+}
+
+
+
+@media (min-width: 1001px){
+    .orderbooksub{
+        display: flex;
+        flex-flow: column nowrap;
+        flex: 1 1;
+        height:450px;
+    }    
+}
+@media (min-width: 20px) and (max-width: 1000px)
+{
+    .orderbooksub{
+        display: flex;
+        flex-flow: row nowrap;
+        flex: 1 1;
+        height:450px;
+    }    
+    .order_panel{
+        padding-bottom: 80px;
+    }
+}
+
+.btext{
+    font-size: 12px;
+}
+

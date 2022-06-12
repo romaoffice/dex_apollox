@@ -31,7 +31,7 @@ function Tokens() {
           }
           if(pairs[i].info.base+pairs[i].info.quote==symbolparam){
             if(!selectedToken){
-                setSelectedToken(pairs[i]);
+                //setSelectedToken(pairs[i]);
             }          
           }
        }

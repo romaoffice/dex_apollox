@@ -33,9 +33,6 @@ function Tradehistory() {
         }
       }
   }, [selectedToken]) 
-  const changeShow=(e)=>{
-    setShowTr(!showtr);    
-  }
   return (
       <div className={showtr ? "tranpanel":"tranpanelh"}>
                 <div className="d-none d-lg-block">

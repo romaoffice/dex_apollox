@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>BTCUSDT | TideX</title>
+  <title>TideX</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -19,51 +19,6 @@
   }
   </style>
   <link rel="stylesheet" href="./style.css">
-  <script>
-    $(document).ready(function(){
-        $(".inputs-order").hide();
-        $("#inputs-limit").show();
-        $("#btn-market").click(function() {
-          $(".inputs-order").hide();
-          $("#inputs-market").show();
-          $(".place-order-nav .nav-link").removeClass("active");
-          $("#btn-market").addClass("active");
-        });
-        $("#btn-limit").click(function() {
-          $(".inputs-order").hide();
-          $("#inputs-limit").show();
-          $(".place-order-nav .nav-link").removeClass("active");
-          $("#btn-limit").addClass("active");
-        });
-        $("#btn-stop-limit").click(function() {
-          $(".inputs-order").hide();
-          $("#inputs-stop-limit").show();
-          $(".place-order-nav .nav-link").removeClass("active");
-          $("#btn-stop-limit").addClass("active");
-        });
-
-        $(".inputs-order-mobile").hide();
-        $("#inputs-limit-mobile").show();
-        $("#btn-market-mobile").click(function() {
-          $(".inputs-order-mobile").hide();
-          $("#inputs-market-mobile").show();
-          $(".place-order-nav .nav-link").removeClass("active");
-          $("#btn-market-mobile").addClass("active");
-        });
-        $("#btn-limit-mobile").click(function() {
-          $(".inputs-order-mobile").hide();
-          $("#inputs-limit-mobile").show();
-          $(".place-order-nav .nav-link").removeClass("active");
-          $("#btn-limit-mobile").addClass("active");
-        });
-        $("#btn-stop-limit-mobile").click(function() {
-          $(".inputs-order-mobile").hide();
-          $("#inputs-stop-limit-mobile").show();
-          $(".place-order-nav .nav-link").removeClass("active");
-          $("#btn-stop-limit-mobile").addClass("active");
-        });
-    });     
-    </script>
 </head>
 
   <body >
