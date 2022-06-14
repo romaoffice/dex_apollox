@@ -42,7 +42,7 @@ function App() {
     }
   }, [size]);
 
-  const {selectedToken,setSelectedToken,long,setLong,ask,setAsk,tokensList}=useSharedState();//useState(undefined);
+  const {selectedToken,setSelectedToken,long,setLong,ask,setAsk,tokensList,daydata}=useSharedState();//useState(undefined);
 
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
@@ -78,8 +78,22 @@ function App() {
                   <div className={(selectedToken?.priceBNBChange>0?" text-blue":" text-red")} >{selectedToken?.priceBNBChange>0?"+":""}{selectedToken?.priceBNBChange.toFixed(2)}%</div>
                 </div>
                 <div className="px-3">
-                  <div className="text-gray">24h Volume</div>
-                  <div>{selectedToken?selectedToken.volumeUSD.toFixed(0):0} USD</div>
+                  <div className="text-gray">24h High</div>
+
+                  <div >{daydata.high}</div>
+                </div>
+                <div className="px-3">
+                  <div className="text-gray">24h Low</div>
+
+                  <div >{daydata.low}</div>
+                </div>
+                <div className="px-3">
+                  <div className="text-gray">24h Volume({selectedToken?.info.quote})</div>
+                  <div>{selectedToken?daydata.volumequote:0}</div>
+                </div>
+                <div className="px-3">
+                  <div className="text-gray">24h Volume({selectedToken?.info.base})</div>
+                  <div>{selectedToken?daydata.volumebase:0}</div>
                 </div>
               </div>
             </div>
@@ -89,7 +103,7 @@ function App() {
               <div className="col-xl col-lg-12">
                 <div className="btc-usdt-desktop">
                   <div className="row">
-                    <div className="col-12 px-lg-2 px-0 top-border">
+                    <div className="col-12" style={{padding:"0px"}}>
                       <div className="chart-container" >
                         <Chart/>
                       </div>
@@ -132,7 +146,17 @@ function App() {
                       </div>
                     </div>
                     <div className="col ticketItem">
-                      <div className="nowPrice py-3">
+                      <div className="tickerItemLabel">24h High</div>
+                      <div className="tickerPriceText">{selectedToken?daydata.high:0} </div>
+                    </div>
+                    <div className="col ticketItem">
+                      <div className="tickerItemLabel">24h Volume({selectedToken?.info.quote})</div>
+                      <div className="tickerPriceText">{selectedToken?daydata.volumequote:0}</div>
+                    </div>
+                  </div>
+                  <div className="row bsdt-usdt-row">
+                  <div className="col-5  pt-4">
+                     <div className="nowPrice py-3">
                         <div className="showPrice">{fixedLength(ask)}</div>
                         <div className="flex-cloumn">
                           <div
@@ -147,11 +171,15 @@ function App() {
                       </div>
                     </div>
                     <div className="col ticketItem">
-                      <div className="tickerItemLabel">24h Volume</div>
-                      <div className="tickerPriceText">{selectedToken?selectedToken.volumeUSD.toFixed(0):0} USD</div>
+                      <div className="tickerItemLabel">24h Low</div>
+                      <div className="tickerPriceText">{selectedToken?daydata.low:0} </div>
+                    </div>
+
+                    <div className="col ticketItem">
+                      <div className="tickerItemLabel">24h Volume({selectedToken?.info.base})</div>
+                      <div className="tickerPriceText">{selectedToken?daydata.volumebase:0}</div>
                     </div>
                   </div>
-
                   <div className="row">
                     <MobileMiddle/>
                     <OrderHistory/>
@@ -202,6 +230,8 @@ function App() {
               <button
                 type="button"
                 className="btn btn-danger btn-block btn-footer-sell"
+                data-toggle="modal"
+                data-target="#myModal1"
               >
                 Sell
               </button>

@@ -51,6 +51,14 @@ export class Token {
         //   socketHandle.to(tokenInfo.symbol).emit("trade",trade);
         // }
       });  
+      const ws_24h = new WebSocket('wss://stream.binance.com:9443/ws/'+this.bsc_symbol+'@ticker');
+      ws_24h.on('message', function incoming(data:any) {
+        const trade = JSON.parse(data);
+        const trdata = {high:self.fixedLength(Number(trade.h)),low:self.fixedLength(Number(trade.l)),volumequote:trade.q,volumebase:trade.v};
+         if(socketHandle){
+           socketHandle.to(tokenInfo.symbol).emit("daydata",trdata);
+         }
+      });  
     }else{//transaction history on chain
       //get pair
       setTimeout(async()=>{

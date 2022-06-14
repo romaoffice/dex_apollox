@@ -20,6 +20,7 @@ function OrderBook() {
     ask,
     setAsk,
     setBid,
+    setDaydata
   } = useSharedState(); //useState(undefined);
   const [orderbook, setOrderbook] = useState({}); //useState(undefined);
   const [orderbookType, setOrderbookType] = useState(1); //useState(undefined);
@@ -97,6 +98,13 @@ function OrderBook() {
           });
           setBid((bid) => Number(data.bids[0][0]));
           setOrderbook(data);
+        }
+      });
+      socket.on("daydata", function (data) {
+        if (stateRef.current.info.symbol != selectedToken.info.symbol) {
+          socket.disconnect();
+        } else {
+          setDaydata(data);
         }
       });
     };

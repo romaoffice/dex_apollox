@@ -29,7 +29,6 @@ const checkConfirmAlls = ()=>{
       if(transaction.blockHash){//confirm
         let timestamp=new Date();
         timestamp = timestamp.toISOString().replace('T',' ').replace('Z','').slice(0,19)
-
         if(tr.ordertype.indexOf("market")>=0){//market order
             db.update_record("positions",tr.id,{"trstatus":"confirm","timestamp":timestamp});
         }else{//limit order
@@ -54,7 +53,7 @@ const checkConfirmAlls = ()=>{
       }
     })
   }catch(e){
-    console.log(e)
+    console.log('confirn all',e)
   }
   
 	setTimeout(checkConfirmAlls,3000);

@@ -4,6 +4,7 @@ import { useBetween } from "use-between";
 // Make a custom hook with your future shared state
 const useFormState = () => {
     const [selectedToken, setSelectedToken]=useState(undefined);
+    const [daydata, setDaydata]=useState({high:0,low:0});
     const [bnbPrice, setBnbPrice]=useState(400);
     const [long, setLong]=useState(true);
     const [ask, setAsk]=useState(0);
@@ -22,7 +23,8 @@ const useFormState = () => {
         tokensList,setTokensList,
         showPairs,setShowPairs,
         tokenCategory,setTokenCategory,
-        showtr,setShowTr
+        showtr,setShowTr,
+        daydata, setDaydata
     };
   };
 

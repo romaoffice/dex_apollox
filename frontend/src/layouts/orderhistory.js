@@ -46,7 +46,6 @@ function OrderHistory() {
       prefix + "/api/getorder?chainid=56&owner=" + account + "&openclose=open";
     const response = await fetch(url);
     const rt = await response.json();
-    console.log(rt);
     setOpenOrders(rt);
   };
   const updateTradeHistories = async () => {
@@ -59,7 +58,6 @@ function OrderHistory() {
     const response = await fetch(url);
     const rt = await response.json();
     setTradeHistories(rt);
-    console.log(rt);
   };
   const getInAmount = (symbol) => {
     let am = 0;

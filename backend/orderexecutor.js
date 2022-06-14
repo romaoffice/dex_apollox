@@ -1,9 +1,9 @@
 
 const common = require("./common");
 const db = require("./db")
-const Web3 = require("web3");
 const {tokenList,wbnb} = require("./config/tokens")
-const ethers = require("ethers");
+const {ethers,BigNumber} = require("ethers");
+const axios = require("axios");
 
 let ordersList = {};
 
@@ -58,107 +58,88 @@ const updateDb = async(chainId,orderbook)=>{
     }
 }
 const executeChain = async(chainId)=>{
-    const web3 = new Web3(new Web3.providers.HttpProvider(common.web3url[chainId]));
-    const myContract = new web3.eth.Contract(common.LIMIT_ABI[chainId],common.contract_limit_order[chainId]);
-    if(ordersList[chainId]){
-        const ordersNum = await myContract.methods.ordersNum().call();
-        if(Number(ordersList[chainId].ordersNum)<Number(ordersNum)){
-            for(let orderId = Number(ordersList[chainId].ordersNum);orderId<Number(ordersNum);orderId++){
-                const orderbook = await myContract.methods.orderBook(orderId).call();
-                if(orderbook.orderStat=='0'){
-                    ordersList[chainId].orders.push(orderId);
+    try{
+        const provider = new ethers.providers.JsonRpcProvider(common.web3url[chainId]);
+        let walletWithProvider = new ethers.Wallet(common.privateKey, provider);
+        const myContract = new ethers.Contract(common.contract_limit_order[chainId],common.LIMIT_ABI[chainId],walletWithProvider);
+        if(ordersList[chainId]){
+            const ordersNum = await myContract.ordersNum();
+            if(Number(ordersList[chainId].ordersNum)<Number(ordersNum)){
+                for(let orderId = Number(ordersList[chainId].ordersNum);orderId<Number(ordersNum);orderId++){
+                    const orderbook = await myContract.orderBook(orderId);
+                    if(orderbook.orderStat=='0'){
+                        ordersList[chainId].orders.push(orderId);
+                    }
                 }
             }
+        }else{
+            const ordersNum = await myContract.ordersNum();
+            const orderLength = await myContract.getOrdersLength();
+            ordersList[chainId] = {ordersNum:ordersNum,orders:[]}
+            for(let i=0;i<orderLength;i++){
+                const orderId = await myContract.orders(i);
+                ordersList[chainId].orders.push(orderId);
+            }
         }
-    }else{
-        const ordersNum = await myContract.methods.ordersNum().call();
-        const orderLength = await myContract.methods.getOrdersLength().call();
-        ordersList[chainId] = {ordersNum:ordersNum,orders:[]}
-        for(let i=0;i<orderLength;i++){
-            const orderId = await myContract.methods.orders(i).call();
-            ordersList[chainId].orders.push(orderId);
+        for(let i=ordersList[chainId].orders.length-1;i>=0;i--){
+            
+            let orderBook = await myContract.orderBook(ordersList[chainId].orders[i]);
+            await updateDb(chainId,orderBook);
+            const orderState = Number(orderBook.orderState);
+            if(orderState>0){
+                ordersList[chainId].orders.splice(i,1);
+                continue;
+            }
+
+            const assetIn = orderBook.assetIn;
+            const assetOut = orderBook.assetOut;
+            const amountIn = orderBook.assetInOffered;
+            const amountOut = orderBook.assetOutExpected;
+
+            const buyToken =assetOut==wbnb.address?"BNB":assetOut;
+            const sellToken =assetIn==wbnb.address?"BNB":assetIn;
+            const url ="https://bsc.api.0x.org/swap/v1/quote?buyToken="+buyToken+"&sellToken="+sellToken+"&sellAmount="+amountIn.toString()+"&slippagePercentage=0.03";
+            const _response  = await axios.get(url);
+            const response = await _response.data;
+
+            const BuyAmount = BigNumber.from(response.buyAmount);
+            const BuyAmountExpected = BigNumber.from(amountOut);
+            if(BuyAmountExpected.gt(BuyAmount)) continue;
+            console.log('executing')
+            const ordertype = assetIn==wbnb.address?0:assetOut==wbnb.address?1:2;
+            let value = BigNumber.from(response.value);
+            let options = {
+                gasLimit : 0,
+                value:wbnb.address==assetIn?(value.mul(1000+STAKEFEE*1000).div(1000)):0
+            };
+
+            const gasLimit = await myContract.estimateGas.marketSwap(
+                ordertype,
+                assetIn,
+                assetOut,
+                response.allowanceTarget,
+                response.to,
+                response.data,
+                response.sellAmount,
+                options)
+            options.gasLimit = gasLimit;
+            const tx = await myContract.marketSwap(
+                ordertype,
+                assetIn,
+                assetOut,
+                response.allowanceTarget,
+                response.to,
+                response.data,
+                response.buyAmount,
+                options);
+
         }
+    }catch(e){
+        console.log('executeChain',e)
     }
     
-    for(let i=ordersList[chainId].orders.length-1;i>=0;i--){
-        
-        let orderBook = await myContract.methods.orderBook(ordersList[chainId].orders[i]).call();
-        await updateDb(chainId,orderBook);
-        const orderState = Number(orderBook.orderState);
-        if(orderState>0){
-            ordersList[chainId].orders.splice(i,1);
-            continue;
-        }
-
-        const orderId = orderBook.id;
-        let tx = {
-            from: common.address_executor, 
-            to: common.contract_limit_order[chainId], 
-            data: myContract.methods.executeOrder(orderId).encodeABI() 
-        };
-        try{
-            const data = await myContract.methods.executeOrder(orderId).estimateGas();
-            tx.gas = data;
-            const signedTx = await web3.eth.accounts.signTransaction(tx, common.privateKey);
-            console.log('ready to execute order for ',orderId,signedTx);
-            const sentTx =await  web3.eth.sendSignedTransaction(signedTx.raw || signedTx.rawTransaction);          
-        }catch(e){
-            //console.log(e.message,orderId)
-        }
-
-    }
 }
 
-const executeAll=async ()=>{
-    try{
-        const orders = db.get_records("SELECT * FROM positions where trstatus='confirm' and orderstatus='open'");
-        orders.map(async(order)=>{
-            const web3 = new Web3(new Web3.providers.HttpProvider(common.web3url[order.chainid]));
-            const myContractBsc = new web3.eth.Contract(common.LIMIT_ABI[common.ChainId.BSC],common.contract_limit_order[common.ChainId.BSC]);
-
-            const limitContract = {
-                [common.ChainId.BSC]:myContractBsc,
-
-            }
-            const myContract = limitContract[order.chainid];
-            const orderID = order.orderid;
-
-            try{
-                const orderBook = await myContract.methods.orderBook(orderID).call();
-                //console.log(orderBook);
-                if(orderBook.orderState!=0){
-                    if(orderBook.orderState===1){//canceled
-                        db.update_record("positions",order.id,{"orderstatus":"canceled"});
-
-                    }else{
-                        db.update_record("positions",order.id,{"orderstatus":"executed"});
-                    }
-                    return;
-                }
-                let tx = {
-                    from: common.address_executor, 
-                    to: common.contract_limit_order[order.chainid], 
-                    data: myContract.methods.executeOrder(orderID).encodeABI() 
-                  };
-                  const data = await myContract.methods.executeOrder(orderID).estimateGas();
-                tx.gas = data;
-                const signedTx = await web3.eth.accounts.signTransaction(tx, common.privateKey);
-                console.log('ready to execute order for ',orderID,signedTx);
-                const sentTx =await  web3.eth.sendSignedTransaction(signedTx.raw || signedTx.rawTransaction);  
-
-                db.update_record("positions",order.id,{"orderstatus":"executed"});
-                console.log('executed order for:',orderBook,sentTx);
-            }catch(e){
-                //console.log(e.message);
-                //console.log(new Date(),'not ready to execute order for ',orderID,e.message);
-            }
-        })
-    }catch(e){
-        console.log('db error');
-    }
-
-    setTimeout(executeAll,20000);
-}
 
 
 const update = async()=>{

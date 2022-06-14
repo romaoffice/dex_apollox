@@ -26,15 +26,15 @@
 {
     position: absolute;
     right: 0px;
-    height: 26px;
-    width: 0px;
+    left:0px;
+    bottom:0px;
     top:0px;
 }
 .relativetr 
 {
   position: relative;
   height:100%;
-  width:100%;  
+  width:100%;
 }
 
 .text-big {

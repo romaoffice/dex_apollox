@@ -5,7 +5,7 @@ function TradePanel() {
     <>
           <div className="modal fade" id="myModal1" role="dialog">
             <div className="modal-dialog btc-usdt-modal footer-modal modal-lg">
-              <div className="modal-content">
+              <div className="modal-content" style={{position:"fixed",bottom:"0px"}}>
                 <div className="modal-header">
                   <h4 className="modal-title">Place Order</h4>
                   <button

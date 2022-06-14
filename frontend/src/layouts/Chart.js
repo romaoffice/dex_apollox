@@ -1,5 +1,5 @@
 import useSharedState from '../hook/useSharedState'
-import TradingViewWidget, { Themes } from 'react-tradingview-widget';
+import TradingViewWidget, { Themes } from './tv';
 import React ,{useState,useEffect,useRef,useCallback,useMemo} from "react";
 
 function Chart() {
@@ -25,6 +25,7 @@ function Chart() {
             autosize
             allow_symbol_change={false}
             hide_legend={true}
+
         />   
       </div>
   );
