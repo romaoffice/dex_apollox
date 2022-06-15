@@ -45,7 +45,6 @@ export default class TradingViewWidget extends PureComponent {
     hide_side_toolbar: PropTypes.bool,
     hide_top_toolbar: PropTypes.bool,
     hotlist: PropTypes.bool,
-    custom_css_url:PropTypes.string,
     interval: PropTypes.oneOf([
       1,
       3,
@@ -85,7 +84,6 @@ export default class TradingViewWidget extends PureComponent {
     referral_id: PropTypes.string,
     save_image: PropTypes.bool,
     show_popup_button: PropTypes.bool,
-    disabled_features:PropTypes.arrayOf(PropTypes.string),
     studies: PropTypes.arrayOf(PropTypes.string),
     style: PropTypes.oneOf([
       BarStyles.BARS,
@@ -190,8 +188,8 @@ export default class TradingViewWidget extends PureComponent {
     if (typeof TradingView === 'undefined' || !document.getElementById(this.containerId)) return;
 
     const { widgetType, ...widgetConfig } = this.props;
-    let config = { ...widgetConfig, container_id: this.containerId };
-    console.log({config})
+    const config = { ...widgetConfig, container_id: this.containerId };
+
     if (config.autosize) {
       delete config.width;
       delete config.height;
@@ -208,7 +206,7 @@ export default class TradingViewWidget extends PureComponent {
     if (config.popup_height && typeof config.popup_height === 'number') {
       config.popup_height = config.popup_height.toString();
     }
-    
+
     /* global TradingView */
     new TradingView[widgetType](config);
   };

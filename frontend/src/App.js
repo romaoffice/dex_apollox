@@ -10,6 +10,7 @@ import HeaderDesktop from "./layouts/header/header_desktop";
 import HeaderMobile from "./layouts/header/header_mobile";
 import TokenList from "./layouts/tokenlist"
 import Chart from "./layouts/Chart"
+
 import OrderBook from "./layouts/orderbook"
 import Trades from "./layouts/trades"
 import MobileMiddle from "./layouts/mobile_middle"

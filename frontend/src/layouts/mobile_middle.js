@@ -1,6 +1,6 @@
 import useSharedState from '../hook/useSharedState'
 import React ,{useState,useRef,useEffect,useCallback,useMemo} from "react";
-import Chart from "./Chart"
+import Chart1 from "./Chart1"
 import OrderBook from "./orderbook"
 import Trades from "./trades"
  
@@ -37,7 +37,7 @@ function MobileMiddle() {
             </li>
           </ul>
           {itemType==1 && (
-            <div className="chart-container" ><Chart/></div>
+            <div className="chart-container" ><Chart1/></div>
             )}
           {itemType==2 && (
             <div  ><OrderBook/></div>

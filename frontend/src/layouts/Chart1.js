@@ -1,8 +1,8 @@
 import useSharedState from '../hook/useSharedState'
-import TradingViewWidget from './lighttv';
+import TradingViewWidget1 from './lv';
 import React ,{useState,useEffect,useRef,useCallback,useMemo} from "react";
 
-function Chart() {
+function Chart1() {
   const fixedLength=(y)=> {
     let num = y;
     let prec = 6;
@@ -17,7 +17,7 @@ function Chart() {
   
   return (
       <div className="tradingview-widget-container chartparent" style={{"height":"100%"}} >
-        <TradingViewWidget 
+        <TradingViewWidget1 
             symbol={selectedToken?(selectedToken.info.listed?(selectedToken.info.base+selectedToken.info.quote):"BNBUSDT"):"BNBUSDT"} 
 
         />   
@@ -25,4 +25,4 @@ function Chart() {
   );
 }
 
-export default Chart;
+export default Chart1;
